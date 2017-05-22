@@ -1,0 +1,121 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>AMP Shadow in AMP as PWA</title>
+    <link rel="canonical" href="http://example.ampproject.org/article-metadata.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Open-source framework for publishing content",
+        "datePublished": "2015-10-07T12:02:41Z",
+        "image": [
+          "logo.jpg"
+        ]
+      }
+    </script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+        body > div {
+            width: 768px;
+            margin: 0 auto;
+            background-color: gray;
+        }
+    </style>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <!-- Asynchronously load the AMP-with-Shadow-DOM runtime library. -->
+    <script async src="https://cdn.ampproject.org/shadow-v0.js"></script>
+</head>
+<body>
+    <div>
+        <h1>This is an amp image in the PWA. The PWA page uses amp component but is not valid amp for enhanced functionality.</h1>
+        <a href="./ampshadow-related.html">Link to related file which well be placed in shadow container.</a>
+        <p>If AMP shadow works, the link will not cause a reload, but place a related article below.</p>
+        <p>If AMP shadow is in conflict with the AMP boilerplate, the image will not be visible.</p>
+        <ul>
+            <li>AMP boilerplate and AMP shadow are in a race condition</li>
+            <li>The initially loaded library will break the second loaded</li>
+        </ul>
+        <p>Broken AMP Shadow Error</p>
+        <blockquote>
+            document-register-element.node.js:1209 Uncaught DOMException: Failed to execute 'define' on 'CustomElementRegistry': this name has already been used with this registry
+            at u.Yb.u.define (https://cdn.ampproject.org/v0.js:50:169)
+            at u.Vb.u.define (https://cdn.ampproject.org/shadow-v0.js:49:169)
+            at Wf (https://cdn.ampproject.org/shadow-v0.js:183:121)
+            at https://cdn.ampproject.org/shadow-v0.js:407:620
+            at https://cdn.ampproject.org/shadow-v0.js:407:661
+        </blockquote>
+        <p>Broken AMP</p>
+        <blockquote>
+            log.js:467 Uncaught Error: No ampdoc found for [object HTMLElement]
+            at wa (log.js:467)
+            at ua.f.createError (log.js:239)
+            at yf.getAmpDoc (ampdoc-impl.js:153)
+            at HTMLElement.b.connectedCallback (custom-element.js:947)
+            at u.Vb.u.define (document-register-element.node.js:1209)
+            at Wf (custom-element.js:1769)
+            at runtime.js:158
+            at amp-pixel.js:25
+        </blockquote>
+        <amp-img src="https://dummyimage.com/1600x900/ff0000/3e3e42.png&text=AMP+image"
+                 width="768"
+                 height="432"
+                 alt="a sample image"></amp-img>
+        <div class="ampshadow-container">
+            This content will be replaced with actual content
+        </div>
+    </div>
+    <script type="application/javascript">
+        function fetchDocument(url) {
+
+            // unfortunately fetch() does not support retrieving documents,
+            // so we have to resort to good old XMLHttpRequest.
+            var xhr = new XMLHttpRequest();
+
+            return new Promise(function(resolve, reject) {
+                xhr.open('GET', url, true);
+                xhr.responseType = 'document';
+                xhr.setRequestHeader('Accept', 'text/html');
+                xhr.onload = function() {
+
+                    // .responseXML contains a ready-to-use Document object
+                    resolve(xhr.responseXML);
+                };
+                xhr.send();
+
+            });
+        }
+
+        function linkEventHandler(e) {
+            if (!AMP || ! AMP.attachShadowDoc) {
+                return false;
+            }
+            e.preventDefault();
+
+            // This can be any DOM element
+            var container = document.querySelector('.ampshadow-container');
+
+            // The AMP page you want to display. You might need to load a different file than the linked document
+            var targetHref = e.target.href;
+            var url = targetHref.replace('.html', '.html');
+
+            // Use our fetchDocument method to get the doc
+            fetchDocument(url).then(function(doc) {
+
+                // Let AMP take over and render the page
+                var ampedDoc = AMP.attachShadowDoc(container, doc, url);
+            });
+        }
+
+        // Listen for link clicks
+        document.addEventListener("DOMContentLoaded", function() {
+            for (var anker of document.querySelectorAll('a')){
+                anker.addEventListener('click', linkEventHandler);
+            }
+        });
+    </script>
+</body>
+</html>
