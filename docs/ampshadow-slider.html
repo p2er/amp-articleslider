@@ -144,16 +144,22 @@
             // Use our fetchDocument method to get the doc
             fetchDocument(url).then(function(doc) {
 
-                // Let AMP take over and render the page
-                var ampedDoc = AMP.attachShadowDoc(container, doc, url);
+                (window.AMP = window.AMP || []).push(function() {
+                    // Let AMP take over and render the page
+                    var ampedDoc = AMP.attachShadowDoc(container, doc, url);
+                });
+
             });
         }
 
-        var slides = document.querySelectorAll('.articleslider li');
-        for (var i = 0, len = slides.length; i < len; i ++) {
-            var slide = slides[i];
-            loadSlide(slide);
-        }
+        // Load slides
+        document.addEventListener("DOMContentLoaded", function() {
+            var slides = document.querySelectorAll('.articleslider li');
+            for (var i = 0, len = slides.length; i < len; i ++) {
+                var slide = slides[i];
+                loadSlide(slide);
+            }
+        });
     </script>
 </body>
 </html>
