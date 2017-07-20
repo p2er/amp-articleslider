@@ -1,0 +1,95 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>Nested media slider</title>
+    <link rel="canonical" href="http://example.ampproject.org/article-metadata.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Open-source framework for publishing content",
+        "datePublished": "2015-10-07T12:02:41Z",
+        "image": [
+          "logo.jpg"
+        ]
+      }
+    </script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+    </style>
+</head>
+<body>
+    <h1>
+        Simple slide demo
+    </h1>
+    <amp-img src="https://dummyimage.com/1600x900/fa0000/3e3e42.png&text=1"
+             layout="responsive"
+             width="768"
+             height="432"
+             alt="a sample image"></amp-img>
+    <p>
+        Text content<br>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    </p>
+    <amp-carousel
+        width="320"
+        height="176"
+        id="article-carousel"
+        layout="responsive"
+        type="slides">
+        <div>
+            <amp-video
+                layout="fill" src="https://www.w3schools.com/html/mov_bbb.mp4" muted="" autoplay="" loop=""
+                poster="https://dummyimage.com/600x400/8f298f/3e3e42.png&text=Poster+image">
+                <div fallback>
+                    <p>Your browser doesn’t support HTML5 video</p>
+                </div>
+                <source type="https://www.w3schools.com/html/mov_bbb.mp4">
+            </amp-video>
+        </div>
+        <div>
+            <amp-video
+                    layout="fill" src="https://www.w3schools.com/html/mov_bbb.mp4" muted="" autoplay="" loop=""
+                       poster="https://dummyimage.com/600x400/8f298f/3e3e42.png&text=Poster+image">
+                <div fallback>
+                    <p>Your browser doesn’t support HTML5 video</p>
+                </div>
+                <source type="https://www.w3schools.com/html/mov_bbb.mp4">
+            </amp-video>
+        </div>
+        <div>
+            <amp-video media="(orientation: portrait)"
+                       layout="fill" src="https://www.w3schools.com/html/mov_bbb.mp4" muted="" autoplay="" loop=""
+                       poster="https://dummyimage.com/600x400/8f298f/3e3e42.png&text=Poster+image">
+                <div fallback>
+                    <p>Your browser doesn’t support HTML5 video</p>
+                </div>
+                <source type="https://www.w3schools.com/html/mov_bbb.mp4">
+            </amp-video>
+        </div>
+    </amp-carousel>
+    <p>
+        Text content<br>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    </p>
+    <amp-img src="https://dummyimage.com/1600x900/00fa00/3e3e42.png&text=2"
+             layout="responsive"
+             width="768"
+             height="432"
+             alt="a sample image"></amp-img>
+    <p>
+        Text content<br>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    </p>
+    <amp-img src="https://dummyimage.com/1600x900/0000fa/3e3e42.png&text=3"
+             layout="responsive"
+             width="768"
+             height="432"
+             alt="a sample image"></amp-img>
+</body>
+</html>
