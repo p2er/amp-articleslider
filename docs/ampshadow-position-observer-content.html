@@ -1,0 +1,92 @@
+
+<!doctype html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <title>Visibility based fade-in image</title>
+    <link rel="canonical" href="https://www.ampstart.com/templates/article.amp">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <style amp-boilerplate="">
+        body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+    </style><noscript><style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
+    <script async="" src="https://cdn.ampproject.org/v0.js"></script>
+    <script custom-element="amp-animation" src="https://cdn.ampproject.org/v0/amp-animation-0.1.js" async></script>
+    <script custom-element="amp-position-observer" src="https://cdn.ampproject.org/v0/amp-position-observer-0.1.js" async></script>
+
+    <style amp-custom>
+        main {
+            font-family: Helvetica, sans-serif;
+            padding: 10px;
+            max-width: 412px;
+            margin: auto;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: normal;
+        }
+
+        amp-img img {
+            object-fit: cover;
+        }
+
+        amp-img {
+            margin: 10px 0;
+            opacity: 0;
+        }
+
+        .spacer {
+            height: 100vh;
+            width: 100%;
+            background-image: -webkit-linear-gradient(#EEE 50%, white 50%);
+            background-image: linear-gradient(#EEE 50%, white 50%);
+            background-size: 100% 3em;
+        }
+
+        pre {
+            display: inline;
+        }
+    </style>
+</head>
+
+<body>
+<amp-animation id="fadein" layout="nodisplay">
+    <script type="application/json">
+        {
+            "duration": "1.5s",
+            "fill": "both",
+            "direction": "alternate",
+            "animations": [
+                {
+                    "selector": "#image",
+                    "keyframes": [
+                        { "opacity": "1" }
+                    ]
+                }
+            ]
+        }
+    </script>
+</amp-animation>
+<main>
+
+    <!--
+        The following image fades in with time when it enters the viewport. Keyframes are setup in a way that it only
+        fades-in once.
+     -->
+    <h2>Visibility-based fade-in image</h2>
+    <div class="spacer"></div>
+    <div>
+        <amp-position-observer
+                intersection-ratios="0"
+                on="enter:fadein.start"
+                layout="nodisplay">
+        </amp-position-observer>
+
+        <amp-img id="image" layout="responsive" width=1912 height=1281 src="https://storage.googleapis.com/ampconf-76504.appspot.com/nature-2634729_1920.jpg">
+        </amp-img>
+    </div>
+    <div class="spacer"></div>
+</main>
+</body>
+</html>
