@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>AMP Shadow IE11</title>
+    <link rel="canonical" href="http://example.ampproject.org/article-metadata.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Open-source framework for publishing content",
+        "datePublished": "2015-10-07T12:02:41Z",
+        "image": [
+          "logo.jpg"
+        ]
+      }
+    </script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            background: white;
+            border-bottom: 1px solid gray;
+            z-index: 1;
+        }
+
+        nav > * {
+            margin: 10px;
+        }
+
+        shadow-content {
+            display: block;
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        shadow-content > div {
+
+        }
+
+    </style>
+    <script async src="https://cdn.ampproject.org/shadow-v0.js"></script>
+</head>
+<body>
+<nav>
+    <span>AMP Shadow position observer</span><a href="./ampshadow-position-observer-content.html">Content document</a>
+</nav>
+
+<shadow-content src="./ampshadow-slider-slide.html">
+    <div class="shadow-content__article"></div>
+</shadow-content>
+</div>
+<script type="application/javascript">
+
+    /**
+     * Fetch document from URL
+     *
+     * @param url {string}
+     * @returns Promise.<Document>
+     */
+    function fetchDocument(url) {
+
+        // unfortunately fetch() does not support retrieving documents,
+        // so we have to resort to good old XMLHttpRequest.
+        var xhr = new XMLHttpRequest();
+
+        return new Promise(function(resolve, reject) {
+            xhr.open('GET', url, true);
+            xhr.responseType = 'document';
+            xhr.setRequestHeader('Accept', 'text/html');
+            xhr.onload = function() {
+
+                // .responseXML contains a ready-to-use Document object
+                resolve(xhr.responseXML);
+            };
+            xhr.send();
+
+        });
+    }
+
+    /**
+     * fetch document and render into DOM node
+     *
+     * @param shadowContent {Element}
+     */
+    function renderContent(shadowContent) {
+
+        // This can be any DOM element
+        var container = shadowContent.querySelector('.shadow-content__article');
+
+        // The AMP page you want to display. You might need to load a different file than the linked document
+        var url = shadowContent.getAttribute('src');
+
+        // Use our fetchDocument method to get the doc
+        fetchDocument(url).then(function(doc) {
+
+            (window.AMP = window.AMP || []).push(function() {
+                // Let AMP take over and render the page
+                var ampedDoc = AMP.attachShadowDoc(container, doc, url);
+            });
+
+        });
+    }
+
+    // Load slides
+    var shadowContent = document.querySelector('shadow-content');
+    renderContent(shadowContent);
+</script>
+</body>
+</html>
