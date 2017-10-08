@@ -51,9 +51,9 @@
     </style>
     <script async src="https://cdn.ampproject.org/shadow-v0.js"></script>
 </head>
-<body>
+<body onload="init()">
 <nav>
-    <span>AMP Shadow position observer</span><a href="./ampshadow-position-observer-content.html">Content document</a>
+    <span>AMP Shadow IE11 render bug</span><a href="./ampshadow-position-observer-content.html">Content document</a>
 </nav>
 
 <shadow-content src="./ampshadow-slider-slide.html">
@@ -113,8 +113,10 @@
     }
 
     // Load slides
-    var shadowContent = document.querySelector('shadow-content');
-    renderContent(shadowContent);
+    function init() {
+        var shadowContent = document.querySelector('shadow-content');
+        renderContent(shadowContent);
+    }
 </script>
 </body>
 </html>
