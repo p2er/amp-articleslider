@@ -60,16 +60,16 @@
 </head>
 <body>
     <div class="spacer"> One viewport before flying carpet.<br>Scroll down to see demo.</div>
-    <h1>Alter window size to less than 500px and more than 500px to change image visibility with media attribute.</h1>
+    <h1>Alter window size to less than 768px and more than 768px to change image visibility with media attribute.</h1>
     <amp-fx-flying-carpet
         height="300">
         <div class="flying-carpet__media">
             <div>
                 <amp-img src="https://dummyimage.com/1920x1920/ff0000/3e3e42.png&text=image+large"
-                         layout="responsive" media="(min-width: 768px), (orientation: landscape)" width="1920" height="1080"
+                         layout="responsive" media="(min-width: 768px)" width="1920" height="1080"
                          alt="a sample image"></amp-img>
                 <amp-img src="https://dummyimage.com/640x1140/00ff00/3e3e42.png&text=image+small"
-                         layout="responsive" media="(max-width: 767px) and (orientation: portrait)" width="640" height="1140"
+                         layout="responsive" media="(max-width: 767px)" width="640" height="1140"
                          alt="a sample image"></amp-img>
             </div>
         </div>
