@@ -132,8 +132,9 @@
          *
          * @param slide {Element}
          * @param options {{visibilityState:string}}
+         * @param index {number}
          */
-        function loadSlide(slide, options) {
+        function loadSlide(slide, options, index) {
 
             // This can be any DOM element
             var container = slide.querySelector('.articleslider__article');
@@ -148,7 +149,7 @@
 
                     // Let AMP take over and render the page
                     var ampedDoc = AMP.attachShadowDoc(container, doc, url, options);
-                    window.ampDocs = window.ampDocs || [];
+                    window.ampDocs = window.ampDocs || {};
                     window.ampDocs.push(ampedDoc);
 
                     // Bug only occurs if user starts on top
@@ -166,7 +167,7 @@
                 if (i == slides.length -1) {
                     options.visibilityState = 'prerender';
                 }
-                loadSlide(slide, options);
+                loadSlide(slide, options, i);
             }
         });
 
