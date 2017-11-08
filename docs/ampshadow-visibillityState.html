@@ -150,7 +150,7 @@
                     // Let AMP take over and render the page
                     var ampedDoc = AMP.attachShadowDoc(container, doc, url, options);
                     window.ampDocs = window.ampDocs || {};
-                    window.ampDocs.push(ampedDoc);
+                    window.ampDocs[index]= ampedDoc;
 
                     // Bug only occurs if user starts on top
                     window.scrollTo(0, 0);
