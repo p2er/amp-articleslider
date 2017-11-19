@@ -1,0 +1,143 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>Amp Analytics OptOut</title>
+    <link rel="canonical" href="http://example.ampproject.org/article-metadata.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Open-source framework for publishing content",
+        "datePublished": "2015-10-07T12:02:41Z",
+        "image": [
+          "logo.jpg"
+        ]
+      }
+    </script>
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+    <script async custom-element="amp-user-notification" src="https://cdn.ampproject.org/v0/amp-user-notification-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+        amp-user-notification {
+            padding: 20px;
+            background-color: white;
+            border: 2px solid red;
+        }
+
+        button {
+            background-color: dodgerblue;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <amp-user-notification
+            layout="nodisplay"
+            id="amp-user-notification">
+        This site uses cookies to personalize content.
+        <a href="">Learn more.</a>
+        <button on="tap:amp-user-notification.dismiss">I accept</button>
+    </amp-user-notification>
+    <amp-analytics type="googleanalytics" data-consent-notification-id="amp-user-notification">
+        <script type="application/json">
+            {
+                "vars": {
+                    "account": "UA-102845752-1"
+                },
+                "triggers": {
+                    "trackPageview": {
+                        "on": "visible",
+                        "request": "pageview"
+                    },
+                    "ampCarouselChange": {
+                        "on": "amp-carousel-change",
+                        "request": "event",
+                        "vars": {
+                            "eventId": "carousel-change-${'${toSlide}' @ context='scriptString'}"
+                        }
+                    },
+                    "ampCarouselNext": {
+                        "on": "amp-carousel-next",
+                        "request": "event",
+                        "vars": {
+                            "eventId": "carousel-next-${'${toSlide}' @ context='scriptString'}"
+                        }
+                    },
+                    "ampCarouselPrev": {
+                        "on": "amp-carousel-next",
+                        "request": "event",
+                        "vars": {
+                            "eventId": "carousel-prev-${'${fromSlide}' @ context='scriptString'}"
+                        }
+                    },
+                    "scrollPings": {
+                        "on": "scroll",
+                        "scrollSpec": {
+                            "verticalBoundaries": [10, 20, 30, 40, 50, 60, 70, 80, 90]
+                        },
+                        "request": "event",
+                        "vars": {
+                            "eventId": "scroll"
+                        }
+                    },
+                    "pageTimer": {
+                        "on": "timer",
+                        "timerSpec": {
+                            "interval": 10,
+                            "maxTimerLength": 600
+                        },
+                        "request": "event",
+                        "vars": {
+                            "eventId": "timer"
+                        }
+                    }
+                }
+            }
+        </script>
+    </amp-analytics>
+    <h1>
+        Click button to optout of tracking.
+    </h1>
+    <p>Reset tracking option after test: localStorage.setItem('amp-store:'+location.origin, '');</p>
+    <button class="pw-a-button pw-a-button--ghost-dark"
+            tabindex="0"
+            role="button"
+            aria-label="${properties.button}"
+            on="tap:amp-user-notification.optoutOfCid,feedback-message.show">
+        Optout of CID and tracking.
+    </button>
+    <p id="feedback-message" hidden>Optout complete. Should not send any more tracking data. Especially after reload.</p>
+    <amp-carousel
+        width="1600"
+        height="900"
+        id="article-carousel"
+        layout="responsive"
+        type="slides">
+        <div>
+            <amp-img src="https://dummyimage.com/1600x900/00fa00/3e3e42.png&text=Slide1"
+                     layout="responsive"
+                     width="1600"
+                     height="900"
+                     alt="a sample image"></amp-img>
+        </div>
+        <div>
+            <amp-img src="https://dummyimage.com/1600x900/fa0000/3e3e42.png&text=Slide2"
+                     layout="responsive"
+                     width="1600"
+                     height="900"
+                     alt="a sample image"></amp-img>
+        </div>
+        <div>
+            <amp-img src="https://dummyimage.com/1600x900/000066/3e3e42.png&text=Slide3"
+                     layout="responsive"
+                     width="1600"
+                     height="900"
+                     alt="a sample image"></amp-img>
+        </div>
+    </amp-carousel>
+</body>
+</html>
