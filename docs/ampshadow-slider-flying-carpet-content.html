@@ -1,0 +1,113 @@
+
+<!doctype html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <title>AMP flying carpet</title>
+    <link rel="canonical" href="https://www.ampstart.com/templates/article.amp">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <style amp-boilerplate="">
+        body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+    </style><noscript><style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
+    <script async="" src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-fx-flying-carpet" src="https://cdn.ampproject.org/v0/amp-fx-flying-carpet-0.1.js"></script><script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+
+    <style amp-custom>
+        main {
+            font-family: Helvetica, sans-serif;
+            padding: 10px;
+            max-width: 1024px;
+            margin: auto;
+        }
+
+        main > div {
+            background-color: cornflowerblue;
+            height: 75vh;
+        }
+        main > div:last-child {
+            height: 100vh;
+        }
+
+        section {
+            padding: 10px 0;
+            border: 1px solid cadetblue;
+        }
+
+        .pw-m-flying-carpet.pw-m-flying-carpet--spaceless-top .container.container--space-big, .pw-m-flying-carpet--spaceless-top .container--fixed.container--space-big {
+            padding-top: 0
+        }
+
+        .pw-m-flying-carpet--spaceless-bottom .container.container--space-big, .pw-m-flying-carpet--spaceless-bottom .container--fixed.container--space-big {
+            padding-bottom: 0
+        }
+
+        .pw-m-flying-carpet__media {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .pw-m-flying-carpet__media > div {
+            flex: none;
+            height: auto;
+            min-width: 100%;
+            min-height: 100%
+        }
+
+        .pw-m-flying-carpet__media amp-img:nth-child(1) {
+            min-height: 100vh;
+            min-width: 177.77777778vh
+        }
+
+        .pw-m-flying-carpet__media amp-img:nth-child(2) {
+            min-height: 100vh;
+            min-width: 56.25vh
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>Flying carpet test content</h1>
+        <div>Spacer for 75vh before flying carpet</div>
+        <section class="pw-m-flying-carpet ">
+            <div class="container container--space-big">
+                <amp-fx-flying-carpet height="500">
+                    <div class="pw-m-flying-carpet__media">
+                        <div>
+                            <amp-img class="pwl"
+                                     src="https://dummyimage.com/1277x718/8f298f/3e3e42.png&text=default"
+                                     srcset="https://dummyimage.com/1920x1080/8f298f/3e3e42.png&text=1920 1920w, https://dummyimage.com/1024x768/8f298f/3e3e42.png&text=1280 1280w, https://dummyimage.com/1024x768/8f298f/3e3e42.png&text=1024 1024w, https://dummyimage.com/1024x768/8f298f/3e3e42.png&text=1024 768w, https://dummyimage.com/1024x768/8f298f/3e3e42.png&text=1024 568w, https://dummyimage.com/1024x768/8f298f/3e3e42.png&text=1024 360w"
+                                     layout="responsive" media="(min-width: 768px), (orientation: landscape)"
+                                     height="1080" width="1920">
+                                <noscript><img
+                                        src="https://dummyimage.com/1024x768/8f298f/3e3e42.png&text=1024"
+                                        width="1920" height="1080"></noscript>
+                            </amp-img>
+                            <amp-img class="pwl"
+                                     src="https://dummyimage.com/718x1277/00ff00/3e3e42.png&text=default"
+                                     srcset="https://dummyimage.com/1080x1920/00ff00/3e3e42.png&text=1080 1920w, https://dummyimage.com/768x1024/00ff00/3e3e42.png&text=768 1280w, https://dummyimage.com/768x1024/00ff00/3e3e42.png&text=768 1024w, https://dummyimage.com/768x1024/00ff00/3e3e42.png&text=768 768w, https://dummyimage.com/768x1024/00ff00/3e3e42.png&text=768 568w, https://dummyimage.com/768x1024/00ff00/3e3e42.png&text=768 360w"
+                                     layout="responsive" media="(max-width: 767px) and (orientation: portrait)"
+                                     height="960" width="1710">
+                                <noscript><img
+                                        src="hhttps://dummyimage.com/768x1024/00ff00/3e3e42.png&text=768"
+                                        width="1710" height="960"></noscript>
+                            </amp-img>
+                        </div>
+                    </div>
+                </amp-fx-flying-carpet>
+            </div>
+        </section>
+        <div>Spacer for 100vh after flying carpet</div>
+    </main>
+</body>
+</html>
